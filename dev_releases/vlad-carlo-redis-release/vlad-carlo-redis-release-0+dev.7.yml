@@ -1,0 +1,16 @@
+---
+packages:
+- name: redis
+  version: d73228175ad04aa88e8bffef1005dda10af05b36
+  fingerprint: d73228175ad04aa88e8bffef1005dda10af05b36
+  sha1: 0fa28a28d527af339a91be7f012620aa09297735
+  dependencies: []
+jobs:
+- name: redis_server
+  version: e78adc7db9324cedbad5ec6181bfb901ac6baafc
+  fingerprint: e78adc7db9324cedbad5ec6181bfb901ac6baafc
+  sha1: 683cbedb05d709f64505ec7f5a1cfd8d7b0185f3
+commit_hash: 5a25d6d7
+uncommitted_changes: true
+name: vlad-carlo-redis-release
+version: 0+dev.7
