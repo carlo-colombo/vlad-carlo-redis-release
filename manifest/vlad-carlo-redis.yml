@@ -10,6 +10,7 @@ jobs:
 - name: redis_server
   instances: 1
   vm_type: t2.micro
+  persistent_disk: 1024
   templates:
   - name: redis_server
     release: vlad-carlo-redis-release
@@ -18,6 +19,8 @@ jobs:
   - name: services
   azs:
   - eu-west-1a
+  properties:
+    port: 2326
 
 stemcells:
 - alias: trusty
