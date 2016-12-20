@@ -1,0 +1,31 @@
+---
+name: vlad-carlo-redis
+director_uuid: <%= `bosh status --uuid`.strip %>
+
+releases:
+- name: vlad-carlo-redis-release
+  version: latest
+
+jobs:
+- name: redis_server
+  instances: 1
+  vm_type: t2.micro
+  templates:
+  - name: redis_server
+    release: vlad-carlo-redis-release
+  stemcell: trusty
+  networks:
+  - name: services
+  azs:
+  - eu-west-1a
+
+stemcells:
+- alias: trusty
+  os: ubuntu-trusty
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 10
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
