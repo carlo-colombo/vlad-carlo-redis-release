@@ -20,7 +20,8 @@ jobs:
   azs:
   - eu-west-1a
   properties:
-    port: 2326
+    redis:
+      port: 1921
 
 stemcells:
 - alias: trusty
