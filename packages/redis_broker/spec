@@ -1,0 +1,10 @@
+---
+name: redis_broker
+
+dependencies:
+- golang
+
+files:
+- redis-broker/**/*.go
+- github.com/**/*
+- code.cloudfoundry.org/**/*

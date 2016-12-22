@@ -6,22 +6,33 @@ releases:
 - name: vlad-carlo-redis-release
   version: latest
 
-jobs:
-- name: redis_server
+instance_groups:
+- name: redis
   instances: 1
   vm_type: t2.micro
   persistent_disk: 1024
-  templates:
-  - name: redis_server
-    release: vlad-carlo-redis-release
   stemcell: trusty
   networks:
   - name: services
   azs:
   - eu-west-1a
-  properties:
-    redis:
-      port: 1921
+  jobs:
+  - name: redis_server
+    release: vlad-carlo-redis-release
+    properties:
+      redis:
+        port: 1921
+- name: broker
+  instances: 1
+  vm_type: t2.micro
+  stemcell: trusty
+  networks:
+  - name: services
+  azs:
+  - eu-west-1a
+  jobs:
+  - name: redis_broker
+    release: vlad-carlo-redis-release
 
 stemcells:
 - alias: trusty

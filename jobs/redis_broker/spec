@@ -1,0 +1,8 @@
+---
+name: redis_broker
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+- golang
+- redis_broker

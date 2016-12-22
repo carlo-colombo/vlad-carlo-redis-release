@@ -1,0 +1,23 @@
+# abort script on any command that exits with a non zero value
+set -e
+PACKAGE_NAME="redis-broker"
+
+PACKAGE_DIR=${BOSH_INSTALL_TARGET}/src/${PACKAGE_NAME}
+
+mkdir -p $(dirname $PACKAGE_DIR)
+
+cp -a $(basename $PACKAGE_NAME)/ $PACKAGE_DIR
+cp -a "github.com" ${BOSH_INSTALL_TARGET}/src
+cp -a "code.cloudfoundry.org" ${BOSH_INSTALL_TARGET}/src
+
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
+export GOPATH=$BOSH_INSTALL_TARGET
+export GOBIN=$GOPATH/bin/
+
+export PATH=$GOROOT/bin:$PATH
+
+pushd $PACKAGE_DIR
+  ls -al
+  go install cmd/main.go
+popd
+
